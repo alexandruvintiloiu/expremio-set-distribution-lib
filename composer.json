@@ -1,0 +1,14 @@
+{
+  "name": "alexandruvintiloiu/expremio-set-distribution-lib",
+  "description": "A library of strategies to distribute sets of objects with attributes based on rules",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alexandru-Florin Vintiloiu",
+      "email": "alexandru.vintiloiu@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {}
+}
