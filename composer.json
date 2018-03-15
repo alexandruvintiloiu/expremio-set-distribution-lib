@@ -10,5 +10,18 @@
     }
   ],
   "minimum-stability": "stable",
-  "require": {}
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Expremio\\SetDistribution\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Expremio\\SetDistribution\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.0"
+  }
 }
