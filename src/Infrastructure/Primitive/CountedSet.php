@@ -3,43 +3,23 @@
 
 namespace Expremio\SetDistribution\Infrastructure\Primitive;
 
-class CountedSet
+
+class CountedSet implements Set
 {
-    /** @var array */
-    protected $set = [];
+    protected $set;
 
-    /**
-     * CountedSet constructor.
-     * @param array $set
-     */
-    public function __construct(array $set = [])
+    public function add($key, $count = 1)
     {
-        $this->set($set);
+        $this->set[$key] += $count;
     }
 
-    /**
-     * @param array $set
-     */
-    public function set(array $set): void
+    public function remove($key, $count = 1)
     {
-        $this->set = $set;
+        $this->set[$key] -= $count;
     }
 
-    /**
-     * @return array
-     */
-    public function get(): array
+    public function get()
     {
         return $this->set;
-    }
-
-    public function add($attribute, int $count = 1)
-    {
-        $this->set[$attribute] += $count;
-    }
-
-    public function remove($attribute, int $count = 1)
-    {
-        $this->set[$attribute] -= $count;
     }
 }
