@@ -6,9 +6,9 @@ namespace Expremio\SetDistribution\Infrastructure\Primitive;
 
 interface Set
 {
-    public function add($key);
+    public function add(string $key);
 
-    public function remove($key);
+    public function remove(string $key);
 
     public function get();
 }

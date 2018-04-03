@@ -6,5 +6,5 @@ namespace Expremio\SetDistribution\Domain\DistributionSet;
 
 interface Attribute
 {
-    public function getKey();
+    public function getAttributeKey();
 }

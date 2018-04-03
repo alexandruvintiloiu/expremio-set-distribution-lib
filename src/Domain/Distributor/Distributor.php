@@ -5,29 +5,34 @@ namespace Expremio\SetDistribution\Domain\Distributor;
 
 
 use Expremio\SetDistribution\Domain\DistributionSet\DistributionSet;
+use Expremio\SetDistribution\Domain\DistributionSetResult\DistributionSetResult;
 
 class Distributor
 {
-    /** @var Strategy */
-    protected $strategy;
-
     /** @var DistributionSet */
     protected $distributionSet;
+
+    /** @var Strategy */
+    protected $strategy;
 
     /**
      * Distributor constructor.
      * @param Strategy $strategy
      * @param DistributionSet $distributionSet
      */
-    public function __construct(Strategy $strategy, DistributionSet $distributionSet)
+    public function __construct(DistributionSet $distributionSet, Strategy $strategy)
     {
         $this->strategy = $strategy;
         $this->distributionSet = $distributionSet;
     }
 
-    public function distribute()
+    public function distribute(): DistributionSetResult
     {
-        $this->strategy->distribute();
+        $result = new DistributionSetResult();
+
+        $this->strategy->distribute($this->distributionSet);
+
+        return $result;
     }
 
 }

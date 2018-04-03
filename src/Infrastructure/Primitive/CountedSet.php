@@ -6,19 +6,24 @@ namespace Expremio\SetDistribution\Infrastructure\Primitive;
 
 class CountedSet implements Set
 {
+    /** @var array */
     protected $set;
 
-    public function add($key, $count = 1)
+    /**
+     * @param string $key
+     * @param int $count
+     */
+    public function add(string $key, $count = 1)
     {
         $this->set[$key] += $count;
     }
 
-    public function remove($key, $count = 1)
+    public function remove(string $key, $count = 1)
     {
         $this->set[$key] -= $count;
     }
 
-    public function get()
+    public function getArray()
     {
         return $this->set;
     }

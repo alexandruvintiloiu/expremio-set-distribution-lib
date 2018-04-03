@@ -4,27 +4,9 @@
 namespace Expremio\SetDistribution\Domain\DistributionSetResult;
 
 
-use Expremio\SetDistribution\Domain\DistributionSet\Attribute;
-use Expremio\SetDistribution\Infrastructure\Primitive\CountedSet;
+use Expremio\SetDistribution\Domain\DistributionSet\DistributionSet;
 
-class DistributionSetResult
+class DistributionSetResult extends DistributionSet
 {
-    /** @var CountedSet */
-    protected $countedSet;
-
-    /**
-     * DistributionSetResult constructor.
-     */
-    public function __construct()
-    {
-        $this->countedSet = new CountedSet();
-    }
-
-
-    protected function add(Attribute $attribute, $count = 1)
-    {
-        $this->countedSet->add($attribute->getKey(), $count);
-    }
-
 
 }
