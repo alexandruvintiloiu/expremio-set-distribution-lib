@@ -7,19 +7,19 @@ namespace Expremio\SetDistribution\Domain\DistributionSet;
 class Distribution
 {
     /** @var Attribute */
-    protected $attribute;
+    protected $originalObject;
 
     /** @var int */
     protected $count;
 
     /**
      * DistributionSetGroup constructor.
-     * @param Attribute $attribute
+     * @param Attribute $originalObject
      * @param int $count
      */
-    public function __construct(Attribute $attribute, int $count = 1)
+    public function __construct(Attribute $originalObject, int $count = 1)
     {
-        $this->attribute = $attribute;
+        $this->originalObject = $originalObject;
         $this->count = $count;
     }
 
@@ -28,7 +28,7 @@ class Distribution
      */
     public function getAttribute(): Attribute
     {
-        return $this->attribute;
+        return $this->originalObject;
     }
 
     /**

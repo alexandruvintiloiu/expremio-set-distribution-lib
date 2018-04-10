@@ -3,10 +3,13 @@
 
 namespace Expremio\SetDistribution\Domain\DistributionSetResult;
 
-
-use Expremio\SetDistribution\Domain\DistributionSet\DistributionSet;
-
-class DistributionSetResult extends DistributionSet
+class DistributionSetResult
 {
+    /** @var DistributionGroup[] */
+    protected $groups = [];
 
+    public function add(DistributionGroup $distributionGroup)
+    {
+        $this->groups[] = $distributionGroup;
+    }
 }
