@@ -25,8 +25,8 @@ class SquareMatrixTwoAttributeFittingStrategy implements Strategy
         $left = 0;
         $right = count($attributeIndex) - 1;
 
-        while ($left !== $right) {
-            $distribution = new Distribution($distributionSet->get(), $attributeIndex[$left);
+        while ($left < $right) {
+            $distribution = new Distribution($distributionSet->get(), $attributeIndex[$left]);
             $result->add($distribution);
         }
     }
