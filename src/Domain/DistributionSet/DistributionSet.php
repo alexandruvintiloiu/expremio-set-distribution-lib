@@ -7,12 +7,12 @@ namespace Expremio\SetDistribution\Domain\DistributionSet;
 use Expremio\SetDistribution\Infrastructure\Primitive\CountedSet;
 
 /** DistributionSet is intended for distributing 'nameless' objects that can be rebuilt if necessary */
-class DistributionSet
+class DistributionSet implements \JsonSerializable
 {
     /** @var CountedSet */
     protected $countedSet;
 
-    /** @var Attribute */
+    /** @var DistributableObject */
     protected $originalObjects;
 
     /**
@@ -25,13 +25,13 @@ class DistributionSet
 
     public function add(Distribution $distribution)
     {
-        $this->countedSet->add($distribution->getAttribute()->getAttributeKey(), $distribution->getCount());
-        $this->originalObjects[$distribution->getAttribute()->getAttributeKey()] = $distribution->getAttribute();
+        $this->countedSet->add($distribution->getAttribute()->getObjectKey(), $distribution->getCount());
+        $this->originalObjects[$distribution->getAttribute()->getObjectKey()] = $distribution->getAttribute();
     }
 
     public function remove(Distribution $distribution)
     {
-        $this->countedSet->remove($distribution->getAttribute()->getAttributeKey(), $distribution->getCount());
+        $this->countedSet->remove($distribution->getAttribute()->getObjectKey(), $distribution->getCount());
     }
 
     public function getObject(string $attributeKey)
@@ -40,6 +40,18 @@ class DistributionSet
     }
 
     public function get(): CountedSet
+    {
+        return $this->countedSet;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
     {
         return $this->countedSet;
     }

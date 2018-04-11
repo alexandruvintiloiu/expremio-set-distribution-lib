@@ -4,7 +4,7 @@
 namespace Expremio\SetDistribution\Domain\DistributionSet;
 
 
-interface Attribute
+interface DistributableObject
 {
-    public function getAttributeKey();
+    public function getObjectKey();
 }

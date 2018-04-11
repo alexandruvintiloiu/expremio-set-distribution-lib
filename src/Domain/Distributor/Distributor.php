@@ -28,11 +28,7 @@ class Distributor
 
     public function distribute(): DistributionSetResult
     {
-        $result = new DistributionSetResult();
-
-        $this->strategy->distribute($this->distributionSet);
-
-        return $result;
+        return $this->strategy->distribute($this->distributionSet);
     }
 
 }

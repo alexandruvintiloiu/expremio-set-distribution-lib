@@ -3,7 +3,7 @@
 
 namespace Expremio\SetDistribution\Infrastructure\Primitive;
 
-class CountedSet implements Set
+class CountedSet implements Set, \JsonSerializable
 {
     /** @var array */
     protected $set = [];
@@ -39,5 +39,17 @@ class CountedSet implements Set
         $set = $this->set;
         asort($set);
         return $set;
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    public function jsonSerialize()
+    {
+        return $this->set;
     }
 }

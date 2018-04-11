@@ -4,9 +4,9 @@
 namespace Expremio\SetDistribution\Tests\Fixtures;
 
 
-use Expremio\SetDistribution\Domain\DistributionSet\Attribute;
+use Expremio\SetDistribution\Domain\DistributionSet\DistributableObject;
 
-class BallFixture implements Attribute
+class BallFixture implements DistributableObject
 {
     protected $color;
 
@@ -20,7 +20,7 @@ class BallFixture implements Attribute
     }
 
 
-    public function getAttributeKey()
+    public function getObjectKey()
     {
         return $this->color;
     }

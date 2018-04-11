@@ -10,7 +10,7 @@ use Expremio\SetDistribution\Domain\Distributor\SquareMatrixTwoAttributeFittingS
 use Expremio\SetDistribution\Tests\Fixtures\BallFixture;
 use PHPUnit\Framework\TestCase;
 
-class DistribuitorFunctionalTest extends TestCase
+class DistributorFunctionalTest extends TestCase
 {
 
     public function testDistributionWorksForBasicExample()
@@ -37,9 +37,41 @@ class DistribuitorFunctionalTest extends TestCase
 
         self::assertInstanceOf(DistributionSetResult::class, $result);
 
-//        $resultArray = $result->
-//        $referenceArray = [['red' => 1, 'green' => 2]];
-//
-//        self::assertEquals($referenceArray, $resultArray);
+        $result = json_encode($result);
+        $reference = <<< JSON
+        [
+          [
+            {
+              "red": 2
+            },
+            {
+              "yellow": 2
+            }
+          ],
+          [
+            {
+              "green": 2
+            },
+            {
+              "yellow": 2
+            }
+          ],
+          [
+            {
+              "blue": 4
+            }
+          ],
+          [
+            {
+              "blue": 2
+            },
+            {
+              "yellow": 2
+            }
+          ]
+        ]
+JSON;
+
+        self::assertJsonStringEqualsJsonString($reference, $result);
     }
 }
